@@ -1,4 +1,4 @@
-import React  from 'react';
+import React ,{useEffect,useState} from 'react';
 import './App.css';
 
 class App extends React.Component {
@@ -24,13 +24,20 @@ this.state = {
       show: !this.state.show
     });
   };
+
   
+
   render() {
+    setInterval(() => {
+      console.log('Interval triggered');
+    }, 1000);
+    
     
   return (
 <div className="app">
         {this.state.show && (
           <>
+          
            <div className="image" style={{backgroundImage: 'url(' + this.state.imageSrc + ')'}}>
             
              </div>
@@ -52,7 +59,6 @@ this.state = {
         <button className="btn" onClick={this.handleShowPerson}>Click here</button>
       </div>
     );
-  }
-  }
+        }}
 
 export default App;
