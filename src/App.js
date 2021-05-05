@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 import './App.css';
 
 class App extends React.Component {
@@ -13,10 +13,16 @@ this.state = {
      content:"Enduring means accepting things as they are and not as you wish them to be. And then looking ahead not behind" ,
       source:"Rafael Nadal",
       show: true,
-    
+    time:0,
   };
   }
-  
+  componentDidMount() {
+    setInterval(() => {
+      this.setState((prevState) => ({
+        time: prevState.time + 1,
+      }));
+    }, 1000);
+  }
 
   handleShowPerson = () => {
     this.setState({
@@ -28,9 +34,7 @@ this.state = {
   
 
   render() {
-    setInterval(() => {
-      console.log('Interval triggered');
-    }, 1000);
+    
     
     
   return (
@@ -57,6 +61,9 @@ this.state = {
         )}
 
         <button className="btn" onClick={this.handleShowPerson}>Click here</button>
+        <div className="counter">
+          The last component was mounted since: {this.state.time} seconds
+        </div>
       </div>
     );
         }}
